@@ -42,6 +42,7 @@ not independently prove legal ownership, authorship, or where a file was made.
 - [AI use disclosure](AI_USAGE.md)
 - [AI use disclosure, English and Traditional Chinese](AI_USAGE_zh-en.md)
 - [Video and pitch kit, English and Traditional Chinese](VIDEO_PITCH_ZH_EN.md)
+- [Advantages, limitations, and future improvements](TRADEOFFS_ZH_EN.md)
 - [Detailed demo runbook, English and Traditional Chinese](DEMO_RUNBOOK_ZH_EN.md)
 - [Test wallet readiness](WALLET_READINESS.md)
 - [Build log](BUILD_LOG.md)

@@ -85,7 +85,9 @@ export default function App() {
   const [verifiedProof, setVerifiedProof] = useState<ProofRecord | null>(null);
   const [timeline, setTimeline] = useState<ProofRecord[]>([]);
   const [timelineState, setTimelineState] = useState<AppState>('idle');
+  const [timelineLookup, setTimelineLookup] = useState('');
   const text = COPY[language];
+  const timelineOwner = timelineLookup.trim() || wallet;
 
   const passportScore = useMemo(() => {
     if (timeline.length === 0) return 0;
@@ -97,7 +99,7 @@ export default function App() {
     return Math.min(100, timeline.length * 4 + activeDays * 8 + Math.min(40, spanDays * 2));
   }, [timeline]);
 
-  const loadTimeline = async (targetWallet = wallet) => {
+  const loadTimeline = async (targetWallet = timelineOwner) => {
     if (!targetWallet || !isAddress(targetWallet)) return;
     if (!isContractConfigured()) { setTimeline([]); return; }
     setTimelineState('working');
@@ -113,6 +115,15 @@ export default function App() {
     } catch { setTimelineState('error'); }
   };
 
+  const lookupPublicTimeline = async () => {
+    if (!isAddress(timelineLookup.trim())) {
+      setTimeline([]);
+      setTimelineState('error');
+      return;
+    }
+    await loadTimeline(timelineLookup.trim());
+  };
+
   const connectWallet = async () => {
     if (!window.ethereum) {
       setAnchorState('error'); setAnchorMessage(text.messages.walletMissing); return;
@@ -125,6 +136,7 @@ export default function App() {
       const address = await signer.getAddress();
       const balance = await provider.getBalance(address);
       setWallet(address);
+      setTimelineLookup(address);
       setWalletBalance(Number(formatEther(balance)).toFixed(4));
       setNetworkOk(true);
       setAnchorMessage('');
@@ -290,12 +302,20 @@ export default function App() {
           <article className="panel passport-panel">
             <div className="panel-heading"><span className="section-icon coral"><History size={19} /></span>
               <div><p className="eyebrow">{text.passportEyebrow}</p><h2>{text.passportTitle}</h2></div></div>
-            {!wallet ? <p className="empty">{text.passportEmpty}</p> : <>
+            <p className="helper">{text.timelineHelp}</p>
+            <div className="timeline-lookup">
+              <input value={timelineLookup} onChange={(event) => setTimelineLookup(event.target.value)}
+                placeholder={text.timelinePlaceholder} aria-label={text.timelineLabel} />
+              <button className="quiet-button" onClick={lookupPublicTimeline} disabled={timelineState === 'working'}>
+                {text.timelineLookupAction}</button>
+            </div>
+            {!timelineOwner ? <p className="empty">{text.passportEmpty}</p> : <>
               <div className="score-row"><div><span>{text.scoreLabel}</span><b>{passportScore}<small>/ 100</small></b></div>
                 <div className="score-ring" style={{ '--score': `${passportScore}%` } as React.CSSProperties}><span>{timeline.length}</span></div></div>
               <p className="score-note">{text.scoreNote}</p>
-              <button className="quiet-button" onClick={() => loadTimeline()} disabled={timelineState === 'working'}>
+              <button className="quiet-button" onClick={() => loadTimeline(timelineOwner)} disabled={timelineState === 'working'}>
                 {timelineState === 'working' ? text.refreshing : text.refresh}</button>
+              {timelineState === 'error' && <p className="status error"><Info size={16} />{text.messages.timelineAddressInvalid}</p>}
               <div className="timeline">{timeline.length === 0 ? <p className="empty">{text.noRecords}</p>
                 : timeline.map((proof) => <div className="timeline-item" key={proof.hash}><i /><div><b>{proof.title}</b>
                   {proof.note && <span>{proof.note}</span>}<span>{formatTime(proof.timestamp, language)}</span><code>{proof.hash.slice(0, 18)}...</code></div></div>)}</div>

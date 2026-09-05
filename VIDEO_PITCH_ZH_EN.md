@@ -34,9 +34,10 @@ Students, independent researchers, and small labs often document work with photo
 
 1. The browser reads a selected file locally and calculates its SHA-256 hash.
 2. The original file is never uploaded to this app, a server, or IPFS.
-3. The user signs one Base Sepolia transaction that stores the hash, title, wallet, and blockchain timestamp.
+3. The user signs one Base Sepolia transaction that stores the hash, title, optional public text, wallet, and blockchain timestamp.
 4. Anyone can later select a file and compare its locally calculated hash with the onchain record without connecting a wallet.
-5. A public timeline summarizes a wallet's recording history. Its continuity score measures activity only, not scientific quality.
+5. Anyone can enter a public wallet address to read its public timeline without connecting a wallet.
+6. A public timeline summarizes recording history. Its continuity score measures activity only, not scientific quality.
 
 ## Who it helps / 誰會使用
 
@@ -67,11 +68,11 @@ A community can inspect a researcher's public proof timeline before deciding wha
 
 **中文**
 
-Base 是 Ethereum Layer 2，保留 EVM 工具相容性並降低一般使用者的交易門檻。黑客松版本只使用 Base Sepolia 測試網與免費測試幣，因此不需要投入真實資產。未來正式版可以再加入代付 gas 或智慧錢包，讓第一次接觸 Web3 的人更接近一般網站體驗。
+Base 是由 Coinbase 孵化的 Ethereum Layer 2，保留 EVM 工具相容性並降低一般使用者的交易門檻。本專案是獨立黑客松作品，並非 Coinbase 或 Base 的合作、背書或官方產品。黑客松版本只使用 Base Sepolia 測試網與免費測試幣，因此不需要投入真實資產。未來正式版可以再加入代付 gas 或智慧錢包，讓第一次接觸 Web3 的人更接近一般網站體驗。
 
 **English**
 
-Base is an Ethereum Layer 2 with strong EVM compatibility and lower transaction friction. The hackathon build uses only Base Sepolia and free test ETH, so no real assets are required. A future production version could add sponsored transactions or smart accounts to make onboarding feel closer to a normal web app.
+Base is an Ethereum Layer 2 incubated by Coinbase, with strong EVM compatibility and lower transaction friction. This is an independent hackathon project, not a Coinbase or Base partnership, endorsement, or official product. The hackathon build uses only Base Sepolia and free test ETH, so no real assets are required. A future production version could add sponsored transactions or smart accounts to make onboarding feel closer to a normal web app.
 
 ## 90-second narration / 90 秒旁白
 
@@ -81,11 +82,11 @@ Base is an Ethereum Layer 2 with strong EVM compatibility and lower transaction 
 
 這是 Base DeSci Proof Notebook。一個不需要先懂 Web3 的研究存證工具。
 
-我把一份實驗 CSV 拖進網站。檔案不會被上傳，瀏覽器只在本機計算 SHA-256 數位指紋。接著輸入研究名稱，用測試錢包簽署一筆 Base Sepolia 交易。鏈上只保存指紋、標題、錢包與時間。
+我把一份實驗 CSV 拖進網站。檔案不會被上傳，瀏覽器只在本機計算 SHA-256 數位指紋。接著輸入研究名稱與可留白的公開文字，用測試錢包簽署一筆 Base Sepolia 交易。鏈上只保存指紋、標題、公開文字、錢包與時間。
 
 之後，任何人都能把原始檔拖進驗證區，不用連接錢包。指紋相同，網站就會顯示最早的鏈上紀錄；只要檔案改動一個字元，指紋就會不同。
 
-公開時間軸可以整理持續記錄的歷史，但我們不把分數當成研究真假的判決。這個產品提供的是可查驗的時間與完整性證據，再交給同行評審、實驗重現和法律程序做更完整的判斷。
+沒有錢包的人仍可驗證檔案，或輸入公開地址查看紀錄；但建立新的鏈上存證仍需要錢包與測試 ETH。公開時間軸可以整理持續記錄的歷史，但我們不把分數當成研究真假的判決。這個產品提供的是可查驗的時間與完整性證據，再交給同行評審、實驗重現和法律程序做更完整的判斷。
 
 ### English
 
@@ -93,11 +94,11 @@ Students and independent researchers share a common problem: how can I show that
 
 This is Base DeSci Proof Notebook, a research timestamping tool designed for people who do not already understand Web3.
 
-I drop an experiment CSV into the page. The file is never uploaded. The browser calculates its SHA-256 fingerprint locally. I add a short title and sign one Base Sepolia test transaction. Only the fingerprint, title, wallet, and timestamp are recorded onchain.
+I drop an experiment CSV into the page. The file is never uploaded. The browser calculates its SHA-256 fingerprint locally. I add a short title and optional public text, then sign one Base Sepolia test transaction. Only the fingerprint, title, public text, wallet, and timestamp are recorded onchain.
 
 Later, anyone can drop the original file into the verification area without connecting a wallet. If the fingerprint matches, the app shows the earlier onchain record. Changing even one character creates a different fingerprint.
 
-The public timeline summarizes consistent recording activity, but the score is not a verdict on scientific truth. The product provides verifiable evidence of time and file integrity, while peer review, replication, and legal processes provide the broader judgment.
+People without a wallet can still verify a file or enter a public address to view its history, but creating a new proof needs a wallet and test ETH. The public timeline summarizes consistent recording activity, but the score is not a verdict on scientific truth. The product provides verifiable evidence of time and file integrity, while peer review, replication, and legal processes provide the broader judgment.
 
 ## Three-minute demo order / 三分鐘展示順序
 
@@ -147,6 +148,16 @@ A public blockchain makes the timestamp independently readable without trusting 
 - **DeSci:** The project gives researchers a privacy-preserving, independently verifiable integrity trail.
 
 Always re-check the current official prize requirements before naming a specific bounty in the final submission.
+
+## Ecosystem positioning / 生態定位
+
+- **Accurate statement:** Built on Base, an Ethereum L2 incubated by Coinbase.
+- **Do not claim:** a Coinbase or Base partnership, endorsement, grant, or official status.
+- **Future direction:** keep Base as the canonical proof registry, then evaluate optional EVM-compatible deployments only when cross-chain verification and sponsor rules provide a real user benefit.
+
+## Advantages and limitations / 優點與限制
+
+See [TRADEOFFS_ZH_EN.md](TRADEOFFS_ZH_EN.md) for a concise, honest comparison.
 
 ## Recording checklist / 錄影檢查表
 

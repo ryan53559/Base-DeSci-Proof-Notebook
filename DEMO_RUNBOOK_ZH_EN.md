@@ -20,6 +20,8 @@ research data.
 3. Wait for the 66-character SHA-256 value to appear.
 4. Explain: the file stayed on this device; only its fingerprint will be sent.
 5. Enter the title `Battery cycle test - original dataset`.
+6. Optionally enter a short public note. Explain that it is permanently public
+   on Base and must not contain sensitive data.
 
 ### Step 2 - Connect wallet / 連接錢包
 
@@ -51,6 +53,14 @@ public address and later ask for a signature.
 3. Show the green verified result, creator address, and Base timestamp.
 4. Open the explorer link and show the public contract record.
 
+### Step 4B - View a public history without a wallet / 不用錢包查看公開紀錄
+
+1. Do not connect a wallet, or disconnect it after the prior step.
+2. Paste the public `0x...` creator address into the public-history field.
+3. Click the history button and show the same proof timeline.
+4. Explain: reading and verification use public blockchain data, so neither
+   requires a wallet or test ETH.
+
 ### Step 5 - Detect a change / 找出改動
 
 1. Choose `demo/battery-cycle-tampered.csv` in the verification panel.
@@ -77,7 +87,7 @@ Before each formal capture, the assistant must explicitly say `現在請截圖`.
 - **Connect:** shares the public wallet address with this website. No gas fee.
 - **Switch network:** changes MetaMask to Base Sepolia. No gas fee.
 - **Deploy contract:** creates the notebook program on Base Sepolia. Uses free test gas once.
-- **Create proof:** writes one file fingerprint and title to the contract. Uses a small amount of free test gas.
+- **Create proof:** writes one file fingerprint, title, and optional public text to the contract. Uses a small amount of free test gas.
 - **Verify:** reads public data only. No wallet and no gas fee.
 
 ## Stop immediately if / 看到以下內容立刻停止

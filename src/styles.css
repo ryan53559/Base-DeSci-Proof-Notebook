@@ -92,6 +92,9 @@ h2 { font-size: 1.2rem; margin-bottom: 0; letter-spacing: 0; }
 .score-note { color: #6a778d; font-size: .7rem; line-height: 1.55; margin: 0 0 12px; }
 .field-label textarea { min-height: 78px; resize: vertical; }
 .field-hint { display: block; color: #6a778d; font-size: .72rem; font-weight: 500; line-height: 1.4; margin-top: 6px; }
+.timeline-lookup { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; margin: 12px 0; }
+.timeline-lookup input { min-width: 0; border: 1px solid #c8d2e2; border-radius: 6px; padding: 9px 10px; outline: none; }
+.timeline-lookup input:focus { border-color: #1746d1; box-shadow: 0 0 0 3px #e2e9ff; }
 .quiet-button { background: #e9eeff; color: #173eaf; padding: 9px 11px; font-size: .79rem; }
 .timeline { display: grid; gap: 12px; margin-top: 15px; }.timeline-item { display: grid; grid-template-columns: 12px minmax(0, 1fr); gap: 10px; }.timeline-item i { margin: 4px 0 0; width: 9px; height: 9px; border-radius: 50%; background: #c77800; box-shadow: 0 0 0 4px #fff1d8; }.timeline-item div { display: grid; gap: 3px; min-width: 0; }.timeline-item b { font-size: .81rem; }.timeline-item span, .timeline-item code { font-size: .69rem; color: #6b7890; overflow-wrap: anywhere; }.empty { color: #738097; font-size: .82rem; line-height: 1.6; margin: 10px 0 0; }
 
