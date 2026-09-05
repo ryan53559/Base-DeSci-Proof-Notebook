@@ -45,6 +45,11 @@ function formatTime(timestamp: number) {
   }).format(new Date(timestamp * 1000));
 }
 
+function getErrorCode(error: unknown) {
+  if (typeof error !== 'object' || error === null || !('code' in error)) return undefined;
+  return Number((error as { code: unknown }).code);
+}
+
 async function fingerprintFile(file: File) {
   const content = await file.arrayBuffer();
   const digest = await crypto.subtle.digest('SHA-256', content);
@@ -91,6 +96,7 @@ function DropZone({
 
 export default function App() {
   const [wallet, setWallet] = useState('');
+  const [walletBalance, setWalletBalance] = useState('');
   const [networkOk, setNetworkOk] = useState(false);
   const [anchorFile, setAnchorFile] = useState<File | null>(null);
   const [anchorHash, setAnchorHash] = useState('');
@@ -105,7 +111,13 @@ export default function App() {
 
   const passportScore = useMemo(() => {
     if (timeline.length === 0) return 0;
-    return Math.min(100, timeline.length * 12 + Math.min(timeline.length, 5) * 4);
+    const activeDays = new Set(
+      timeline.map((proof) => new Date(proof.timestamp * 1000).toISOString().slice(0, 10)),
+    ).size;
+    const oldest = Math.min(...timeline.map((proof) => proof.timestamp));
+    const newest = Math.max(...timeline.map((proof) => proof.timestamp));
+    const spanDays = Math.floor((newest - oldest) / 86_400);
+    return Math.min(100, timeline.length * 4 + activeDays * 8 + Math.min(40, spanDays * 2));
   }, [timeline]);
 
   const connectWallet = async () => {
@@ -120,12 +132,15 @@ export default function App() {
       await window.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: BASE_SEPOLIA.chainId }] });
       const provider = new BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
-      setWallet(await signer.getAddress());
+      const address = await signer.getAddress();
+      const balance = await provider.getBalance(address);
+      setWallet(address);
+      setWalletBalance(Number(formatEther(balance)).toFixed(4));
       setNetworkOk(true);
       setAnchorMessage('');
+      await loadTimeline(address);
     } catch (error: unknown) {
-      const message = error instanceof Error ? error.message : '錢包連接失敗。';
-      if (message.includes('4902')) {
+      if (getErrorCode(error) === 4902) {
         try {
           await window.ethereum.request({ method: 'wallet_addEthereumChain', params: [BASE_SEPOLIA] });
           await connectWallet();
@@ -165,6 +180,11 @@ export default function App() {
       setAnchorMessage('請替這份研究填一個簡短名稱。');
       return;
     }
+    if (new TextEncoder().encode(title.trim()).length > 120) {
+      setAnchorState('error');
+      setAnchorMessage('研究名稱太長，請縮短一點再試。');
+      return;
+    }
     if (!wallet || !networkOk) {
       setAnchorState('error');
       setAnchorMessage('請先連接 Base Sepolia 測試錢包。');
@@ -197,7 +217,7 @@ export default function App() {
     setVerifyState('working');
     setVerifyMessage('正在本機比對檔案指紋。');
     setVerifiedProof(null);
-    if (!isContractConfigured() || !window.ethereum) {
+    if (!isContractConfigured()) {
       setVerifyState('error');
       setVerifyMessage('驗證合約還沒部署，因此目前無法查詢鏈上紀錄。');
       return;
@@ -224,7 +244,7 @@ export default function App() {
 
   const loadTimeline = async (targetWallet = wallet) => {
     if (!targetWallet || !isAddress(targetWallet)) return;
-    if (!isContractConfigured() || !window.ethereum) {
+    if (!isContractConfigured()) {
       setTimeline([]);
       return;
     }
@@ -257,9 +277,17 @@ export default function App() {
           <span>Proof Notebook</span>
           <small>Base Sepolia</small>
         </a>
+        <span className={`contract-status ${isContractConfigured() ? 'live' : ''}`}>
+          {isContractConfigured() ? '合約已啟用' : '等待部署'}
+        </span>
         <button className="wallet-button" onClick={connectWallet}>
           <Wallet size={18} />
-          {wallet ? shortAddress(wallet) : '連接測試錢包'}
+          {wallet ? (
+            <span className="wallet-copy">
+              <b>{shortAddress(wallet)}</b>
+              <small>{walletBalance} test ETH</small>
+            </span>
+          ) : '連接測試錢包'}
         </button>
       </nav>
 
@@ -303,6 +331,7 @@ export default function App() {
             <div className="panel-heading"><span className="section-icon coral"><History size={19} /></span><div><p className="eyebrow">研究誠信護照</p><h2>你的公開紀錄</h2></div></div>
             {!wallet ? <p className="empty">連接測試錢包後，這裡會顯示你的存證時間軸。</p> : <>
               <div className="score-row"><div><span>持續記錄分數</span><b>{passportScore}<small>/ 100</small></b></div><div className="score-ring" style={{ '--score': `${passportScore}%` } as React.CSSProperties}><span>{timeline.length}</span></div></div>
+              <p className="score-note">依存證筆數、不同記錄日與持續時間計算；它不代表研究內容一定正確。</p>
               <button className="quiet-button" onClick={() => loadTimeline()} disabled={timelineState === 'working'}>{timelineState === 'working' ? '讀取中...' : '更新我的紀錄'}</button>
               <div className="timeline">{timeline.length === 0 ? <p className="empty">還沒有紀錄。完成第一筆存證後，它會出現在這裡。</p> : timeline.map((proof) => <div className="timeline-item" key={proof.hash}><i /><div><b>{proof.title}</b><span>{formatTime(proof.timestamp)}</span><code>{proof.hash.slice(0, 18)}...</code></div></div>)}</div>
             </>}
@@ -315,6 +344,7 @@ export default function App() {
         <details open><summary>連接錢包是做什麼？</summary><p>錢包像是你的數位簽名。只有你按下「留下證明」時，它才會請你確認。驗證檔案不需要錢包。</p></details>
         <details><summary>合約地址是做什麼？</summary><p>它是網站要查詢的 Base 帳本位置。部署完成前網站會清楚顯示尚未啟用，不會假裝資料已上鏈。</p></details>
         <details><summary>這能證明我是作者嗎？</summary><p>它能證明某個檔案指紋在某個時間已被記錄，不能單獨決定著作權、專利權或研究品質。</p></details>
+        <details><summary>分數代表研究一定是真的嗎？</summary><p>不代表。分數只整理這個錢包公開存證的次數與持續時間，不能取代同行評審、實驗重現或法律判斷。</p></details>
       </section>
 
       <footer>Base DeSci Proof Notebook · Base Sepolia testnet · v0.1.0 foundation</footer>

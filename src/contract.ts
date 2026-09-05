@@ -1,4 +1,4 @@
-import { BrowserProvider, Contract } from 'ethers';
+import { BrowserProvider, Contract, JsonRpcProvider } from 'ethers';
 
 export const BASE_SEPOLIA = {
   chainId: '0x14a34',
@@ -22,7 +22,9 @@ export function isContractConfigured() {
 }
 
 export async function getReadContract() {
-  const provider = new BrowserProvider(window.ethereum!);
+  const provider = new JsonRpcProvider(BASE_SEPOLIA.rpcUrls[0], 84532, {
+    staticNetwork: true,
+  });
   return new Contract(CONTRACT_ADDRESS, CONTRACT_ABI, provider);
 }
 

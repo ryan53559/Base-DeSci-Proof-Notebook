@@ -23,6 +23,15 @@
 - The project uses Base Sepolia chain ID `84532` and free test ETH only.
 - Wallet creation remains a human-only step because the recovery phrase must never be exposed to this project or an AI tool.
 
+## 2026-09-05 - Local build and contract compile
+
+- Installed the locked project dependencies with pnpm.
+- Compiled `BaseDeSciProofNotebook.sol` locally with Solidity `0.8.36`.
+- Compiled the same contract successfully in Remix before deployment.
+- Added a public Base Sepolia read connection, so file verification does not require a wallet.
+- Added clearer contract status, title length checks, and an honest explanation of the continuity score.
+- Built the React production bundle successfully. Live Base Sepolia deployment and transaction testing are still pending.
+
 ## 2026-09-05 Local proof test
 
 - Added `standalone.html`, a dependency-free browser version for local testing.
