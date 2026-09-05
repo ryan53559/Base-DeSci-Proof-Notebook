@@ -45,7 +45,7 @@ export const COPY = {
       ['這能證明我是作者嗎？', '它能證明某個檔案指紋在某個鏈上時間已存在，不能單獨決定著作權、專利權或研究品質。'],
       ['分數代表研究一定是真的嗎？', '不代表。分數只整理公開存證的次數與持續時間，不能取代同行評審、實驗重現或法律判斷。'],
     ],
-    footer: 'DeSci Proof Notebook · Base Sepolia 測試網 · v0.4.0',
+    footer: 'DeSci Proof Notebook · Base Sepolia 測試網 · v0.5.0',
     messages: {
       walletMissing: '找不到錢包。請先安裝並開啟 MetaMask。',
       networkAddFailed: '無法加入 Base Sepolia，請在錢包中確認後再試。',
@@ -114,7 +114,7 @@ export const COPY = {
       ['Does this prove I am the author?', 'It proves that a file fingerprint existed at an onchain time. It cannot decide copyright, patent rights, or research quality by itself.'],
       ['Does the score mean the research is true?', 'No. It only summarizes public proof activity over time. It cannot replace peer review, replication, or legal judgment.'],
     ],
-    footer: 'DeSci Proof Notebook · Base Sepolia testnet · v0.4.0',
+    footer: 'DeSci Proof Notebook · Base Sepolia testnet · v0.5.0',
     messages: {
       walletMissing: 'No wallet was found. Install and open MetaMask first.',
       networkAddFailed: 'Base Sepolia could not be added. Confirm the request in your wallet and try again.',

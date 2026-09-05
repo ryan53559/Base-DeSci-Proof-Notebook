@@ -21,6 +21,9 @@ Last updated: 2026-09-06
 - [x] Responsive v0.4 interface checked on desktop and a 390 x 844 mobile viewport.
 - [x] GitHub Pages build and deployment workflow prepared.
 - [x] Chainlink CRE deployment access request submitted.
+- [x] CRE simulation re-run using the website demo CSV fingerprint.
+- [x] Science-fair style report, official video script, AI disclosure, and sponsor evidence prepared.
+- [x] Repeatable smoke test added for original and modified demo files.
 
 ## In progress / 進行中
 

@@ -3,6 +3,9 @@
 This file contains truthful, reusable material for the ETHOnline demo video,
 project page, judge conversation, and live presentation.
 
+For the final recording, use [OFFICIAL_VIDEO_SCRIPT_ZH_EN.md](OFFICIAL_VIDEO_SCRIPT_ZH_EN.md).
+It includes the current official 2-to-4-minute rules and the Chainlink demo.
+
 ## One-line pitch / 一句話介紹
 
 **中文**
@@ -143,11 +146,12 @@ A public blockchain makes the timestamp independently readable without trusting 
 
 ## Sponsor positioning / 贊助商獎定位
 
-- **Base:** The complete proof lifecycle runs on Base Sepolia and is designed for mainstream onboarding.
-- **Account abstraction, future extension:** Sponsored transactions and smart accounts could remove the need for users to obtain test ETH, but they should be added only if the relevant sponsor rules reward a real integration.
-- **DeSci:** The project gives researchers a privacy-preserving, independently verifiable integrity trail.
+- **Chainlink Best Confidential Workflow:** The same public file fingerprint is combined with a private embargo rule inside `handlerInTee`; only a commitment leaves the handler. The official CRE CLI simulation succeeded.
+- **Base infrastructure:** The complete public proof lifecycle runs on Base Sepolia, but Base/Coinbase is not listed as an ETHOnline 2026 partner prize on the checked event page.
+- **Do not over-select:** The Graph, Arc, Privy, and other partner prizes require integrations this project does not currently have.
 
-Always re-check the current official prize requirements before naming a specific bounty in the final submission.
+The final submission should select Chainlink and describe the CRE component as
+successfully simulated, not deployed. Deployment access remains under review.
 
 ## Ecosystem positioning / 生態定位
 

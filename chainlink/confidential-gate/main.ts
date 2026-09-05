@@ -22,7 +22,7 @@ export type GateResult = {
 
 const DEFAULT_CONFIG: GateConfig = {
   schedule: '0 */10 * * * *',
-  public_file_hash: '0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+  public_file_hash: '0x98c90262d08bef2b6ad69261dc84f7931d41ade9501645fc7859f3f3d2dec602',
   policy_label: 'embargo-until-review',
   secret_id: 'research_gate_secret',
 };
@@ -33,7 +33,7 @@ export const createResearchGateCommitment = (runtime: TeeRuntime<GateConfig>): G
   const secret = runtime.getSecrets([{ id: runtime.config.secret_id }]).result();
   const privateRule = secret[runtime.config.secret_id].value;
   const commitmentInput = [
-    'desci-proof-notebook-v0.3',
+    'desci-proof-notebook-v0.5',
     runtime.config.public_file_hash.toLowerCase(),
     runtime.config.policy_label,
     privateRule,

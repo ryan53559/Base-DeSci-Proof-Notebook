@@ -13,7 +13,7 @@ import './types';
 
 type AppState = 'idle' | 'working' | 'success' | 'error';
 
-const CHAINLINK_COMMITMENT = '0x758cab8e346cf0fcde8e0afd607c1f3d5d5df35d2d7ae6a25d39baafdbca5965';
+const CHAINLINK_COMMITMENT = '0x9180230a5e5f68097684d9b351ebc52e12de09f8962d453e38f109c85d5f25b1';
 
 interface ProofRecord {
   hash: string;

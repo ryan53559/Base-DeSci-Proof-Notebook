@@ -48,6 +48,10 @@ not independently prove legal ownership, authorship, or where a file was made.
 - [Build log](BUILD_LOG.md)
 - [Version and history rules](VERSIONING.md)
 - [Project progress](PROGRESS_ZH_EN.md)
+- [Science-fair style project report](PROJECT_REPORT_ZH_EN.md)
+- [Official submission and video guide](OFFICIAL_VIDEO_SCRIPT_ZH_EN.md)
+- [Human and AI collaboration record](HUMAN_AI_COLLABORATION_ZH_EN.md)
+- [Chainlink prize evidence mapping](CHAINLINK_SUBMISSION_EVIDENCE.md)
 - [Chainlink confidential research gate](chainlink/README.md)
 - [Chainlink build status](chainlink/BUILD_STATUS.md)
 
@@ -72,6 +76,9 @@ override it for a future deployment.
 The Chainlink CRE confidential extension has passed a local simulation with
 synthetic data. Live CRE deployment access was requested on 2026-09-06 and is
 still awaiting Chainlink approval, so the website labels it as simulation-only.
+ETHOnline 2026's Chainlink rules allow a successful CRE CLI simulation as
+execution evidence for Best Confidential Workflow. The repository records the
+matching demo-file hash, terminal result, and one-way commitment.
 
 ## Naming note
 

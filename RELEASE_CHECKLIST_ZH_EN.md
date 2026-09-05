@@ -9,6 +9,9 @@
 - [x] GitHub Pages workflow prepared.
 - [x] Chainlink CRE local simulation completed with synthetic data.
 - [x] Chainlink CRE deployment access requested.
+- [x] Chainlink simulation repeated with the exact website demo-file hash.
+- [x] Official-rule video script and science-fair style analysis completed.
+- [x] Honest human and AI contribution record completed.
 
 ## One wallet action / 需要一次錢包操作
 
