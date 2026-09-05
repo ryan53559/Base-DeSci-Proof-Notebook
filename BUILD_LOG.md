@@ -38,6 +38,15 @@
 - Added a 90-second narration, a three-minute demo order, practical use cases, judge questions, and recording safety checks.
 - Clarified that a timestamp is supporting evidence, not automatic proof of authorship, patents, location, scientific truth, or non-AI media.
 
+## 2026-09-05 - Bilingual product interface
+
+- Added a Chinese and English segmented language control.
+- Translated the complete proof, verification, passport, status, error, and FAQ experience.
+- Reworked the first screen into a compact three-step scientific workflow.
+- Improved keyboard focus, loading feedback, responsive layout rules, and visual contrast.
+- Rebuilt TypeScript, Solidity, and the Vite production bundle successfully.
+- Desktop rendering and language switching were checked in the browser. A real mobile-device pass remains required because viewport emulation was unavailable during this run.
+
 ## 2026-09-05 Local proof test
 
 - Added `standalone.html`, a dependency-free browser version for local testing.
