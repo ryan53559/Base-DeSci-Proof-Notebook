@@ -22,3 +22,10 @@
 - Added a test-wallet readiness checklist for a separate MetaMask wallet.
 - The project uses Base Sepolia chain ID `84532` and free test ETH only.
 - Wallet creation remains a human-only step because the recovery phrase must never be exposed to this project or an AI tool.
+
+## 2026-09-05 Local proof test
+
+- Added `standalone.html`, a dependency-free browser version for local testing.
+- Started a local-only server at `127.0.0.1`.
+- Selected `README.md` through the user interface and verified that the browser produced SHA-256 fingerprint `0x5daf487cbe1a2e28aa7042d858af030b980f9d6403bc9db9f349227c1e7ce5d4`.
+- No file upload, wallet connection, contract deployment, or blockchain transaction occurred during this test.
