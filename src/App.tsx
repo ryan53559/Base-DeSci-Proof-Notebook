@@ -41,6 +41,10 @@ async function fingerprintFile(file: File) {
   return `0x${Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('')}`;
 }
 
+function byteLength(value: string) {
+  return new TextEncoder().encode(value).length;
+}
+
 function DropZone({ label, hint, onFile, busy, compact = false }: {
   label: string; hint: string; onFile: (file: File) => void; busy: boolean; compact?: boolean;
 }) {
@@ -156,10 +160,10 @@ export default function App() {
     if (!title.trim()) {
       setAnchorState('error'); setAnchorMessage(text.messages.titleRequired); return;
     }
-    if (new TextEncoder().encode(title.trim()).length > 120) {
+    if (byteLength(title.trim()) > 120) {
       setAnchorState('error'); setAnchorMessage(text.messages.titleLong); return;
     }
-    if (new TextEncoder().encode(note.trim()).length > 280) {
+    if (byteLength(note.trim()) > 280) {
       setAnchorState('error'); setAnchorMessage(text.messages.noteLong); return;
     }
     if (!wallet || !networkOk) {
@@ -257,7 +261,7 @@ export default function App() {
             onChange={(event) => setTitle(event.target.value)} maxLength={120} placeholder={text.titlePlaceholder} /></label>
           <label className="field-label">{text.noteLabel}<textarea value={note}
             onChange={(event) => setNote(event.target.value)} maxLength={280} placeholder={text.notePlaceholder} />
-            <small className="field-hint">{text.noteHint} {note.length}/280</small></label>
+            <small className="field-hint">{text.noteHint} {byteLength(note)}/280 bytes</small></label>
           <div className="hash-box"><span>{text.hashLabel}</span><code>{anchorHash || text.hashEmpty}</code></div>
           <button className="primary-button" onClick={anchorProof} disabled={anchorState === 'working'}>
             <Fingerprint size={18} />{text.anchorAction}</button>
