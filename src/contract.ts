@@ -8,7 +8,8 @@ export const BASE_SEPOLIA = {
   blockExplorerUrls: ['https://sepolia.basescan.org'],
 };
 
-export const CONTRACT_ADDRESS = import.meta.env.VITE_CONTRACT_ADDRESS?.trim() ?? '';
+export const DEFAULT_CONTRACT_ADDRESS = '0xD505ad9d439ee159eE4Af3ad331F417C3B8A4a29';
+export const CONTRACT_ADDRESS = import.meta.env.VITE_CONTRACT_ADDRESS?.trim() || DEFAULT_CONTRACT_ADDRESS;
 
 export const CONTRACT_ABI = [
   'function anchorProof(bytes32 fileHash, string title, string note)',
