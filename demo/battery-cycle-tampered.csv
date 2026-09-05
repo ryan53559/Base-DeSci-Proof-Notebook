@@ -1,0 +1,6 @@
+sample_id,voltage_v,current_a,temperature_c,capacity_mah
+CELL-A-001,3.72,0.50,24.8,1984
+CELL-A-002,3.70,0.50,25.1,1978
+CELL-A-003,3.69,0.50,25.4,1999
+CELL-A-004,3.67,0.50,25.7,1965
+CELL-A-005,3.66,0.50,25.9,1958

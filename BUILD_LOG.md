@@ -47,6 +47,12 @@
 - Rebuilt TypeScript, Solidity, and the Vite production bundle successfully.
 - Desktop rendering and language switching were checked in the browser. A real mobile-device pass remains required because viewport emulation was unavailable during this run.
 
+## 2026-09-05 - Demo and deployment kit
+
+- Added safe synthetic original and one-value-modified CSV files for the demo.
+- Added a bilingual step-by-step runbook, wallet explanations, stop conditions, and formal screenshot moments.
+- Added a GitHub Pages workflow that reads the public contract address from a repository Actions variable.
+
 ## 2026-09-05 Local proof test
 
 - Added `standalone.html`, a dependency-free browser version for local testing.

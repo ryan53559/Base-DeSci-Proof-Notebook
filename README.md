@@ -42,6 +42,19 @@ not independently prove legal ownership, authorship, or where a file was made.
 - [AI use disclosure](AI_USAGE.md)
 - [AI use disclosure, English and Traditional Chinese](AI_USAGE_zh-en.md)
 - [Video and pitch kit, English and Traditional Chinese](VIDEO_PITCH_ZH_EN.md)
+- [Detailed demo runbook, English and Traditional Chinese](DEMO_RUNBOOK_ZH_EN.md)
 - [Test wallet readiness](WALLET_READINESS.md)
 - [Build log](BUILD_LOG.md)
 - [Version and history rules](VERSIONING.md)
+
+## Demo data
+
+The `demo/` folder contains one synthetic battery CSV and a second copy with a
+single changed value. They are safe to use when showing successful verification
+and change detection.
+
+## Deployment
+
+The included GitHub Pages workflow builds from `main`. Set the repository
+Actions variable `VITE_CONTRACT_ADDRESS` to the deployed Base Sepolia contract
+address before running the workflow.
