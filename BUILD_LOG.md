@@ -32,6 +32,12 @@
 - Added clearer contract status, title length checks, and an honest explanation of the continuity score.
 - Built the React production bundle successfully. Live Base Sepolia deployment and transaction testing are still pending.
 
+## 2026-09-05 - Bilingual pitch material
+
+- Added truthful Chinese and English material for the demo video and project page.
+- Added a 90-second narration, a three-minute demo order, practical use cases, judge questions, and recording safety checks.
+- Clarified that a timestamp is supporting evidence, not automatic proof of authorship, patents, location, scientific truth, or non-AI media.
+
 ## 2026-09-05 Local proof test
 
 - Added `standalone.html`, a dependency-free browser version for local testing.
