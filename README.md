@@ -59,6 +59,8 @@ and change detection.
 
 ## Deployment
 
+Public website: [https://ryan53559.github.io/Base-DeSci-Proof-Notebook/](https://ryan53559.github.io/Base-DeSci-Proof-Notebook/)
+
 The Base Sepolia contract is deployed at
 [`0xD505ad9d439ee159eE4Af3ad331F417C3B8A4a29`](https://base-sepolia.blockscout.com/address/0xD505ad9d439ee159eE4Af3ad331F417C3B8A4a29).
 Its source was verified through Remix with Sourcify and Blockscout.
@@ -66,6 +68,10 @@ Its source was verified through Remix with Sourcify and Blockscout.
 The included GitHub Pages workflow builds from `main`. The address above is the
 website default. The repository Actions variable `VITE_CONTRACT_ADDRESS` may
 override it for a future deployment.
+
+The Chainlink CRE confidential extension has passed a local simulation with
+synthetic data. Live CRE deployment access was requested on 2026-09-06 and is
+still awaiting Chainlink approval, so the website labels it as simulation-only.
 
 ## Naming note
 

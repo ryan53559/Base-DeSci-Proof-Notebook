@@ -1,6 +1,6 @@
 # Project Progress / 專案進度
 
-Last updated: 2026-09-05
+Last updated: 2026-09-06
 
 ## Completed / 已完成
 
@@ -18,14 +18,16 @@ Last updated: 2026-09-05
 - [x] Chainlink CRE SDK dependencies installed with certificate validation enabled.
 - [x] Chainlink CRE Confidential Workflow compiled and simulated with synthetic data only.
 - [x] Git history preserved in feature branches.
+- [x] Responsive v0.4 interface checked on desktop and a 390 x 844 mobile viewport.
+- [x] GitHub Pages build and deployment workflow prepared.
+- [x] Chainlink CRE deployment access request submitted.
 
 ## In progress / 進行中
 
-- [ ] Decide whether a new v0.3 contract should record the Chainlink commitment onchain.
+- [ ] Wait for Chainlink to review the CRE deployment access request.
 
 ## Not started / 尚未開始
 
-- [ ] Deploy the website to GitHub Pages and test it in a clean browser.
 - [ ] Create one demonstration proof with the synthetic CSV.
 - [ ] Record the short project demonstration video.
 - [ ] Complete the ETHGlobal project submission page.
@@ -33,8 +35,9 @@ Last updated: 2026-09-05
 ## Honest status / 誠實狀態
 
 The core Base Sepolia proof application is deployed. The Chainlink extension
-has been successfully compiled and simulated with synthetic data. Do not
-describe Chainlink as live or deployed until deployment evidence exists.
+has been successfully compiled and simulated with synthetic data. Its CRE
+deployment access request is pending review. Do not describe Chainlink as live
+or deployed until deployment evidence exists.
 
 核心 Base Sepolia 存證應用已部署。Chainlink 延伸功能已用合成資料完成編譯與
-模擬。尚未部署前，不能說 Chainlink 已上線或已部署。
+模擬，CRE 部署權限申請正在審核。取得實際部署證據前，不能說 Chainlink 已上線。

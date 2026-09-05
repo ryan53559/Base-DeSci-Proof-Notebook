@@ -1,7 +1,8 @@
 import { ChangeEvent, DragEvent, useMemo, useState } from 'react';
 import {
-  CheckCircle2, ClipboardCheck, DatabaseZap, FileKey2, FileUp, Fingerprint,
-  History, Info, Languages, Link2, LoaderCircle, LockKeyhole, ShieldAlert, Wallet,
+  ArrowDown, Check, CheckCircle2, ClipboardCheck, Copy, DatabaseZap, ExternalLink,
+  FileKey2, FileUp, Fingerprint, FlaskConical, History, Info, Languages, Link2,
+  LoaderCircle, LockKeyhole, Network, ShieldAlert, Wallet,
 } from 'lucide-react';
 import { BrowserProvider, formatEther, isAddress } from 'ethers';
 import { COPY, Language } from './copy';
@@ -11,6 +12,8 @@ import {
 import './types';
 
 type AppState = 'idle' | 'working' | 'success' | 'error';
+
+const CHAINLINK_COMMITMENT = '0x758cab8e346cf0fcde8e0afd607c1f3d5d5df35d2d7ae6a25d39baafdbca5965';
 
 interface ProofRecord {
   hash: string;
@@ -86,8 +89,20 @@ export default function App() {
   const [timeline, setTimeline] = useState<ProofRecord[]>([]);
   const [timelineState, setTimelineState] = useState<AppState>('idle');
   const [timelineLookup, setTimelineLookup] = useState('');
+  const [copiedValue, setCopiedValue] = useState('');
   const text = COPY[language];
   const timelineOwner = timelineLookup.trim() || wallet;
+
+  const copyValue = async (value: string) => {
+    if (!value) return;
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopiedValue(value);
+      window.setTimeout(() => setCopiedValue(''), 1800);
+    } catch {
+      setCopiedValue('');
+    }
+  };
 
   const passportScore = useMemo(() => {
     if (timeline.length === 0) return 0;
@@ -231,15 +246,22 @@ export default function App() {
           <span className="brand-mark"><Fingerprint size={22} /></span>
           <span>Proof Notebook</span><small>Base Sepolia</small>
         </a>
+        <div className="nav-links" aria-label={text.navLabel}>
+          <a href="#anchor">{text.navAnchor}</a>
+          <a href="#verify">{text.navVerify}</a>
+          <a href="#passport">{text.navHistory}</a>
+        </div>
         <div className="nav-actions">
           <div className="language-switch" aria-label={text.languageLabel}>
             <Languages size={15} />
             <button className={language === 'zh' ? 'active' : ''} onClick={() => setLanguage('zh')}>中</button>
             <button className={language === 'en' ? 'active' : ''} onClick={() => setLanguage('en')}>EN</button>
           </div>
-          <span className={`contract-status ${isContractConfigured() ? 'live' : ''}`}>
-            {isContractConfigured() ? text.contractLive : text.contractPending}
-          </span>
+          <a className={`contract-status ${isContractConfigured() ? 'live' : ''}`}
+            href={`${BASE_SEPOLIA.blockExplorerUrls[0]}/address/${CONTRACT_ADDRESS}`}
+            target="_blank" rel="noreferrer">
+            <span />{isContractConfigured() ? text.contractLive : text.contractPending}
+          </a>
           <button className="wallet-button" onClick={connectWallet}>
             <Wallet size={18} />
             {wallet ? <span className="wallet-copy"><b>{shortAddress(wallet)}</b>
@@ -250,7 +272,12 @@ export default function App() {
 
       <section id="top" className="intro">
         <div className="intro-copy"><p className="eyebrow">{text.eyebrow}</p>
-          <h1>{text.headline}</h1><p className="lead">{text.lead}</p></div>
+          <h1>{text.headline}</h1><p className="lead">{text.lead}</p>
+          <div className="intro-actions">
+            <a className="action-link primary-link" href="#anchor"><Fingerprint size={17} />{text.startAnchor}<ArrowDown size={15} /></a>
+            <a className="action-link secondary-link" href="#verify"><ClipboardCheck size={17} />{text.startVerify}</a>
+          </div>
+        </div>
         <div className="privacy-note"><LockKeyhole size={22} />
           <span><b>{text.privacyTitle}</b><br />{text.privacyBody}</span></div>
       </section>
@@ -262,9 +289,10 @@ export default function App() {
       </section>
 
       <section className="workspace" aria-label={text.workspaceLabel}>
-        <article className="panel anchor-panel">
+        <article id="anchor" className="panel anchor-panel">
           <div className="panel-heading"><span className="section-icon indigo"><FileKey2 size={19} /></span>
-            <div><p className="eyebrow">{text.stepOne}</p><h2>{text.anchorTitle}</h2></div></div>
+            <div><p className="eyebrow">{text.stepOne}</p><h2>{text.anchorTitle}</h2></div>
+            <span className="access-label wallet-access"><Wallet size={13} />{text.walletNeeded}</span></div>
           <p className="helper">{text.anchorHelp}</p>
           <DropZone label={text.anchorDrop} hint={text.chooseFile} onFile={selectAnchorFile} busy={anchorState === 'working'} />
           {anchorFile && <div className="file-chip"><FileKey2 size={16} /><span>{anchorFile.name}</span>
@@ -274,7 +302,11 @@ export default function App() {
           <label className="field-label">{text.noteLabel}<textarea value={note}
             onChange={(event) => setNote(event.target.value)} maxLength={280} placeholder={text.notePlaceholder} />
             <small className="field-hint">{text.noteHint} {byteLength(note)}/280 bytes</small></label>
-          <div className="hash-box"><span>{text.hashLabel}</span><code>{anchorHash || text.hashEmpty}</code></div>
+          <div className="hash-box"><div><span>{text.hashLabel}</span>
+            {anchorHash && <button className="icon-button" onClick={() => copyValue(anchorHash)}
+              title={text.copyHash} aria-label={text.copyHash}>
+              {copiedValue === anchorHash ? <Check size={15} /> : <Copy size={15} />}
+            </button>}</div><code>{anchorHash || text.hashEmpty}</code></div>
           <button className="primary-button" onClick={anchorProof} disabled={anchorState === 'working'}>
             <Fingerprint size={18} />{text.anchorAction}</button>
           {anchorMessage && <p className={`status ${anchorState}`} role="status" aria-live="polite">
@@ -282,9 +314,10 @@ export default function App() {
         </article>
 
         <aside className="side-stack">
-          <article className="panel verify-panel">
+          <article id="verify" className="panel verify-panel">
             <div className="panel-heading"><span className="section-icon green"><ClipboardCheck size={19} /></span>
-              <div><p className="eyebrow">{text.stepTwo}</p><h2>{text.verifyTitle}</h2></div></div>
+              <div><p className="eyebrow">{text.stepTwo}</p><h2>{text.verifyTitle}</h2></div>
+              <span className="access-label public-access"><CheckCircle2 size={13} />{text.noWallet}</span></div>
             <p className="helper">{text.verifyHelp}</p>
             <DropZone compact label={text.verifyDrop} hint={text.noWallet} onFile={verifyFile} busy={verifyState === 'working'} />
             {verifyMessage && <div className={`result ${verifyState}`} role="status" aria-live="polite">
@@ -295,11 +328,16 @@ export default function App() {
               <span>{text.creator}: {shortAddress(verifiedProof.creator)}</span>
               {verifiedProof.note && <span>{text.noteLabel}: {verifiedProof.note}</span>}
               <span>{text.time}: {formatTime(verifiedProof.timestamp, language)}</span>
+              <span className="proof-hash"><code>{verifiedProof.hash}</code>
+                <button className="icon-button light" onClick={() => copyValue(verifiedProof.hash)}
+                  title={text.copyHash} aria-label={text.copyHash}>
+                  {copiedValue === verifiedProof.hash ? <Check size={14} /> : <Copy size={14} />}
+                </button></span>
               {explorerUrl && <a href={explorerUrl} target="_blank" rel="noreferrer">
-                <Link2 size={14} />{text.explorer}</a>}</div>}
+                <Link2 size={14} />{text.explorer}<ExternalLink size={12} /></a>}</div>}
           </article>
 
-          <article className="panel passport-panel">
+          <article id="passport" className="panel passport-panel">
             <div className="panel-heading"><span className="section-icon coral"><History size={19} /></span>
               <div><p className="eyebrow">{text.passportEyebrow}</p><h2>{text.passportTitle}</h2></div></div>
             <p className="helper">{text.timelineHelp}</p>
@@ -322,6 +360,27 @@ export default function App() {
             </>}
           </article>
         </aside>
+      </section>
+
+      <section className="evidence" aria-label={text.evidenceTitle}>
+        <div className="evidence-intro"><p className="eyebrow">{text.evidenceEyebrow}</p>
+          <h2>{text.evidenceTitle}</h2><p>{text.evidenceBody}</p></div>
+        <div className="evidence-grid">
+          <a className="evidence-item" href={`${BASE_SEPOLIA.blockExplorerUrls[0]}/address/${CONTRACT_ADDRESS}`}
+            target="_blank" rel="noreferrer">
+            <span className="evidence-icon"><Network size={20} /></span><span><small>{text.contractEvidence}</small>
+              <b>{shortAddress(CONTRACT_ADDRESS)}</b><em>{text.contractEvidenceDetail}</em></span><ExternalLink size={16} />
+          </a>
+          <div className="evidence-item">
+            <span className="evidence-icon chainlink"><FlaskConical size={20} /></span><span><small>{text.creEvidence}</small>
+              <b>{text.simulationPassed}</b><em>{text.creEvidenceDetail}</em></span>
+            <button className="icon-button light" onClick={() => copyValue(CHAINLINK_COMMITMENT)}
+              title={text.copyCommitment} aria-label={text.copyCommitment}>
+              {copiedValue === CHAINLINK_COMMITMENT ? <Check size={15} /> : <Copy size={15} />}
+            </button>
+          </div>
+        </div>
+        <p className="evidence-boundary"><Info size={15} />{text.simulationOnly}</p>
       </section>
 
       <section className="explainers" aria-label={text.faqEyebrow}>

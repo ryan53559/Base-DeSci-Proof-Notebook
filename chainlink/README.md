@@ -25,12 +25,12 @@ reveal the rule and reproduce the same commitment.
 ## Current status
 
 - The Base Sepolia file-timestamp contract is deployed separately.
-- This CRE workflow is designed for free local simulation first.
+- The CRE workflow compiled and completed a local simulation with synthetic data.
+- A live deployment access request was submitted on 2026-09-06 and is pending review.
 - No personal research data, real API keys, private keys, or real assets are
   used in the simulation.
-- A production workflow deployment requires Chainlink access approval. Do not
-  call this a live Chainlink integration until the simulation log has succeeded
-  and a deployed workflow or supported app endpoint is demonstrated.
+- Do not call this a live Chainlink integration until a deployed workflow or
+  supported app endpoint is demonstrated.
 
 ## Run the simulation
 
