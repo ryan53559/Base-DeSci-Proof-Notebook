@@ -6,3 +6,7 @@ artifacts/
 !.env.example
 coverage/
 *.log
+.tools/
+chainlink/**/node_modules/
+chainlink/**/dist/
+chainlink/**/.env

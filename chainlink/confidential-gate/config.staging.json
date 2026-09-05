@@ -1,0 +1,6 @@
+{
+  "schedule": "0 */10 * * * *",
+  "public_file_hash": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "policy_label": "embargo-until-review",
+  "secret_id": "research_gate_secret"
+}

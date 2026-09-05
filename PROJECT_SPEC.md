@@ -2,7 +2,7 @@
 
 ## Product name
 
-Base DeSci Proof Notebook
+DeSci Proof Notebook
 
 ## Audience
 
@@ -39,6 +39,8 @@ is a simple consistency indicator, not a judgment of scientific quality.
 
 ## Later, only after the core works
 
+- Chainlink CRE confidential research-policy gate. It must be simulated with
+  synthetic data before it is described as a working integration.
 - ENSv2 research identity experiment on Sepolia.
 - Sponsor integrations that genuinely improve the core flow.
 - Mobile polish and demo-friendly guided states.

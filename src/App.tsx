@@ -227,7 +227,7 @@ export default function App() {
   return (
     <main>
       <nav className="nav-shell">
-        <a className="brand" href="#top" aria-label="Base DeSci Proof Notebook">
+        <a className="brand" href="#top" aria-label="DeSci Proof Notebook">
           <span className="brand-mark"><Fingerprint size={22} /></span>
           <span>Proof Notebook</span><small>Base Sepolia</small>
         </a>

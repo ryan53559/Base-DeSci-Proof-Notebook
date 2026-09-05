@@ -1,13 +1,13 @@
-# Base DeSci Proof Notebook
+# DeSci Proof Notebook
 
-An open, beginner-friendly Base Sepolia app for proving that a research file
+An open, beginner-friendly research proof app on Base Sepolia for proving that a research file
 existed at a particular time without uploading that file anywhere.
 
 ## ETHOnline 2026
 
 - Track: From Scratch
 - Build window started: 2026-09-05 00:00 Asia/Taipei
-- Network target: Base Sepolia only
+- Current network target: Base Sepolia only
 - Repository purpose: official hackathon submission source
 
 ## The problem
@@ -47,6 +47,8 @@ not independently prove legal ownership, authorship, or where a file was made.
 - [Test wallet readiness](WALLET_READINESS.md)
 - [Build log](BUILD_LOG.md)
 - [Version and history rules](VERSIONING.md)
+- [Chainlink confidential research gate](chainlink/README.md)
+- [Chainlink build status](chainlink/BUILD_STATUS.md)
 
 ## Demo data
 
@@ -63,3 +65,9 @@ Its source was verified through Remix with Sourcify and Blockscout.
 The included GitHub Pages workflow builds from `main`. The address above is the
 website default. The repository Actions variable `VITE_CONTRACT_ADDRESS` may
 override it for a future deployment.
+
+## Naming note
+
+The public product name is **DeSci Proof Notebook**. The deployed Base Sepolia
+contract keeps the technical Solidity name `BaseDeSciProofNotebook`, because a
+deployed contract name and address cannot be renamed after deployment.

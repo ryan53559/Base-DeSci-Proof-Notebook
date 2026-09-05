@@ -1,0 +1,16 @@
+{
+  "name": "desci-proof-notebook-confidential-gate",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@chainlink/cre-sdk": "1.18.0",
+    "viem": "^2.37.5"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  }
+}

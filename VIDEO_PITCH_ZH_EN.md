@@ -1,4 +1,4 @@
-# Base DeSci Proof Notebook - Video and Pitch Kit
+# DeSci Proof Notebook - Video and Pitch Kit
 
 This file contains truthful, reusable material for the ETHOnline demo video,
 project page, judge conversation, and live presentation.
@@ -7,11 +7,11 @@ project page, judge conversation, and live presentation.
 
 **中文**
 
-Base DeSci Proof Notebook 讓任何人不用上傳原始檔，就能把研究檔案的數位指紋與時間留在 Base，日後用原始檔公開驗證內容是否改變。
+DeSci Proof Notebook 讓任何人不用上傳原始檔，就能把研究檔案的數位指紋與時間留在鏈上，日後用原始檔公開驗證內容是否改變。
 
 **English**
 
-Base DeSci Proof Notebook lets anyone timestamp a research file on Base without uploading the original, then verify later whether that exact file has changed.
+DeSci Proof Notebook lets anyone timestamp a research file onchain without uploading the original, then verify later whether that exact file has changed.
 
 ## Motivation / 製作動機
 
@@ -80,7 +80,7 @@ Base is an Ethereum Layer 2 incubated by Coinbase, with strong EVM compatibility
 
 很多學生與獨立研究者都有一個共同問題：我今天產生的原始資料，半年後要怎麼證明它當時就已經存在，而且沒有被偷偷修改？把未公開資料交給雲端平台又可能帶來隱私問題。
 
-這是 Base DeSci Proof Notebook。一個不需要先懂 Web3 的研究存證工具。
+這是 DeSci Proof Notebook。一個不需要先懂 Web3 的研究存證工具。
 
 我把一份實驗 CSV 拖進網站。檔案不會被上傳，瀏覽器只在本機計算 SHA-256 數位指紋。接著輸入研究名稱與可留白的公開文字，用測試錢包簽署一筆 Base Sepolia 交易。鏈上只保存指紋、標題、公開文字、錢包與時間。
 
@@ -92,7 +92,7 @@ Base is an Ethereum Layer 2 incubated by Coinbase, with strong EVM compatibility
 
 Students and independent researchers share a common problem: how can I show that today's raw data already existed months ago and has not been silently changed, without handing unpublished work to a cloud platform?
 
-This is Base DeSci Proof Notebook, a research timestamping tool designed for people who do not already understand Web3.
+This is DeSci Proof Notebook, a research timestamping tool designed for people who do not already understand Web3.
 
 I drop an experiment CSV into the page. The file is never uploaded. The browser calculates its SHA-256 fingerprint locally. I add a short title and optional public text, then sign one Base Sepolia test transaction. Only the fingerprint, title, public text, wallet, and timestamp are recorded onchain.
 
