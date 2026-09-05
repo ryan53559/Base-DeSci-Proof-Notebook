@@ -10,3 +10,4 @@ coverage/
 chainlink/**/node_modules/
 chainlink/**/dist/
 chainlink/**/.env
+chainlink/**/.cre_build_tmp.js

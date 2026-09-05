@@ -6,25 +6,29 @@
 - Added a TypeScript CRE workflow using `handlerInTee`.
 - Added one synthetic secret input named `RESEARCH_GATE_SECRET`.
 - Ensured the workflow logs only a commitment hash, never the secret.
+- Installed the official Bun runtime locally (`v1.4.2`) for CRE TypeScript builds.
+- Ran a successful local CRE simulation on 2026-09-05 using synthetic data only.
+- Recorded the simulation commitment:
+  `0x758cab8e346cf0fcde8e0afd607c1f3d5d5df35d2d7ae6a25d39baafdbca5965`.
 - Documented the privacy boundary and the exact simulation command.
 
-## Not yet claimed as complete
+## Simulation evidence
 
-The workflow has not yet produced a successful CRE simulation log. The local
-package download failed because this Windows environment could not verify the
-TLS certificate from npm:
+The simulator compiled the workflow, loaded the synthetic secret, requested a
+TEE execution, and completed successfully. Its public output was:
 
 ```text
-UNABLE_TO_VERIFY_LEAF_SIGNATURE
+publicFileHash: 0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+policyLabel: embargo-until-review
+commitment: 0x758cab8e346cf0fcde8e0afd607c1f3d5d5df35d2d7ae6a25d39baafdbca5965
 ```
 
-Certificate verification must remain enabled. Do not fix this by using
-`strict-ssl=false`, disabling TLS verification, or installing unverified
-packages. Once the device trusts the relevant certificate chain, run the
-simulation in `confidential-gate/README.md` with only its synthetic `.env`
-value, then save the terminal output as demo evidence.
+The simulator explicitly warns that it is not a real TEE and is for debugging
+only. This is valid simulation evidence, not a live deployment or proof that
+real research data has been protected.
 
 ## Submission rule
 
-Until the simulation succeeds, describe this as an **in-progress Chainlink CRE
-extension**, not as a deployed or completed Chainlink integration.
+Describe this as a **successfully simulated Chainlink CRE Confidential
+Workflow**. Do not describe it as deployed, live, or as protection for real
+research data until deployment evidence exists.

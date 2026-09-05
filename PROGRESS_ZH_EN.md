@@ -15,13 +15,12 @@ Last updated: 2026-09-05
 - [x] Demo sample files and a bilingual video outline.
 - [x] Official Chainlink CRE CLI installed locally and version checked.
 - [x] Chainlink Confidential Research Gate source added with `handlerInTee`.
+- [x] Chainlink CRE SDK dependencies installed with certificate validation enabled.
+- [x] Chainlink CRE Confidential Workflow compiled and simulated with synthetic data only.
 - [x] Git history preserved in feature branches.
 
 ## In progress / 進行中
 
-- [ ] Install Chainlink CRE SDK dependencies after the local TLS certificate issue is fixed.
-- [ ] Run a CRE simulation with synthetic data only.
-- [ ] Capture a successful terminal log for the demo after simulation succeeds.
 - [ ] Decide whether a new v0.3 contract should record the Chainlink commitment onchain.
 
 ## Not started / 尚未開始
@@ -33,11 +32,9 @@ Last updated: 2026-09-05
 
 ## Honest status / 誠實狀態
 
-The core Base Sepolia proof application is deployed. The Chainlink extension is
-source-complete but is **not yet simulated successfully** because npm download
-certificate verification failed on this computer. Do not describe Chainlink as
-live, deployed, or complete until a successful simulation log exists.
+The core Base Sepolia proof application is deployed. The Chainlink extension
+has been successfully compiled and simulated with synthetic data. Do not
+describe Chainlink as live or deployed until deployment evidence exists.
 
-核心 Base Sepolia 存證應用已部署。Chainlink 延伸功能的原始碼已完成，但因這台
-電腦下載 npm 套件時憑證驗證失敗，**尚未成功模擬**。在有成功模擬紀錄前，不能說
-Chainlink 已上線、已部署或已完成。
+核心 Base Sepolia 存證應用已部署。Chainlink 延伸功能已用合成資料完成編譯與
+模擬。尚未部署前，不能說 Chainlink 已上線或已部署。
