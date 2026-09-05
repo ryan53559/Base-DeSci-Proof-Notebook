@@ -59,3 +59,23 @@
 - Started a local-only server at `127.0.0.1`.
 - Selected `README.md` through the user interface and verified that the browser produced SHA-256 fingerprint `0x5daf487cbe1a2e28aa7042d858af030b980f9d6403bc9db9f349227c1e7ce5d4`.
 - No file upload, wallet connection, contract deployment, or blockchain transaction occurred during this test.
+
+## 2026-09-06 - v0.4 interface and release
+
+- Added direct create, verify, and public-history navigation.
+- Added explicit wallet/no-wallet access labels and copyable evidence values.
+- Added a visible Base contract link and honest Chainlink simulation status.
+- Checked the production UI on desktop and a 390 x 844 mobile viewport.
+- Rebuilt the production bundle and recompiled the Solidity contract.
+- Confirmed through Base Sepolia RPC that the deployed address contains 3914 bytes of contract code.
+- Enabled GitHub Actions as the repository's GitHub Pages source.
+
+## 2026-09-06 - v0.5 submission evidence
+
+- Re-ran the CRE Confidential Workflow with the SHA-256 of the website's synthetic demo CSV.
+- Recorded successful workflow, binary, config, and commitment hashes.
+- Added a repeatable smoke test for original and one-value-modified demo files.
+- Added a science-fair style report, sponsor-requirement mapping, honest AI contribution record, and official-rule video script.
+- Updated version history and prepared a final Pages deployment.
+- Removed the obsolete `standalone.html` prototype because it still described
+  the contract as undeployed and could confuse users after the live React build.

@@ -2,20 +2,24 @@
 
 ## Purpose
 
-This document records how AI-assisted tools were used during ETHOnline 2026.
+This document records the project's extensive AI coding assistance during
+ETHOnline 2026. Most implementation drafts were AI-generated under human
+product direction. The running product does not call an AI API.
 
 ## Human direction and decisions
 
 The project builder defined the problem, target audience, privacy rule, Base
-Sepolia network choice, product scope, priority order, testing decisions, and
-final submission choices. The builder reviews each generated change, tests the
-app, selects what to keep, and records evidence.
+Sepolia network choice, product scope, Chainlink use case, priority order,
+testing decisions, and final submission choices. The builder controlled wallet
+signatures, reviewed visible behavior, challenged limitations, and accepted the
+release evidence.
 
 ## AI-assisted work
 
-AI assistance is used for implementation drafts, explanations, debugging,
-documentation drafts, test ideas, and translation. Project-specific prompts,
-plans, and changes are recorded in this repository as the project evolves.
+AI assistance produced most code drafts, explanations, debugging steps,
+documentation, test ideas, and translation under the builder's direction.
+Project specifications, human decisions, branch history, and changes are
+recorded in this repository.
 
 ## Review rule
 

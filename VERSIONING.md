@@ -5,7 +5,7 @@ This project keeps two kinds of history.
 ## Git history
 
 - `main` contains reviewed, working milestones.
-- `feature/v0.2-bilingual-showcase` is the active implementation branch.
+- `feature/v0.5-submission-kit` is the active implementation branch.
 - Every meaningful change receives a short commit message before it is merged.
 - Major milestones use a Git tag such as `v0.1.0` so the exact submission state can be recovered.
 
@@ -18,4 +18,11 @@ This project keeps two kinds of history.
 ## Current progress
 
 - `v0.1.0-foundation`: app shell, local SHA-256, Base Sepolia contract source, beginner explanations.
-- `v0.2.0-bilingual-showcase`: in progress; bilingual product UI, presentation material, visual polish, and live Base Sepolia verification.
+- `v0.2.0-bilingual-showcase`: bilingual UI, public history, and deployed Base connection.
+- `v0.3.0-chainlink-confidential-gate`: Chainlink CRE confidential workflow and successful synthetic simulation.
+- `v0.4.0-ui-pages-release`: responsive UI polish, evidence section, and Pages workflow.
+- `v0.5.0-submission-kit`: science-fair report, official video script, repeatable tests, and submission evidence.
+
+The four feature branches remain on GitHub. Git branches and tags are the
+recoverable version snapshots; copying the whole repository into each version
+would add duplicate files and make judging history harder to read.

@@ -1,6 +1,6 @@
 {
   "schedule": "0 */10 * * * *",
-  "public_file_hash": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "public_file_hash": "0x98c90262d08bef2b6ad69261dc84f7931d41ade9501645fc7859f3f3d2dec602",
   "policy_label": "embargo-until-review",
   "secret_id": "research_gate_secret"
 }

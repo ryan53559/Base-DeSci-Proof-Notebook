@@ -23,7 +23,9 @@ Output that can be public:
 - a keccak256 commitment hash
 
 The commitment binds the file hash, policy label, and private rule. The workflow
-does not log the private rule.
+does not log the private rule. The staging configuration uses the SHA-256 of
+`demo/battery-cycle-original.csv`, connecting the confidential flow to the same
+file used by the website demo.
 
 ## Local simulation
 
@@ -37,9 +39,9 @@ does not log the private rule.
 .\.tools\cre\cre_v1.32.0_windows_amd64.exe workflow simulate .\chainlink\confidential-gate --target=staging-settings --env .\chainlink\confidential-gate\.env
 ```
 
-5. A successful result must include `confidential-gate-complete` and a
-   `commitment` value. Capture the terminal output for the hackathon demo only
-   after it succeeds.
+5. A successful result must include `confidential-gate-complete`, the demo file
+   hash, and a `commitment` value. Capture the terminal output for the hackathon
+   demo only after it succeeds.
 
 ## Honest submission wording
 
