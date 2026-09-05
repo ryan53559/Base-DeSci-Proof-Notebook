@@ -2,7 +2,7 @@
 
 ## Product name
 
-Base DeSci Proof Notebook
+DeSci Proof Notebook
 
 ## Audience
 
@@ -33,12 +33,14 @@ and checks the onchain proof. It clearly shows either a match or no match.
 
 ### 3. Research passport
 
-The app shows a public timeline for the connected wallet: titles, timestamps,
-and proof count. The score is a simple consistency indicator, not a judgment of
-scientific quality.
+The app shows a public timeline from either a connected wallet or a manually
+entered public wallet address: titles, timestamps, and proof count. The score
+is a simple consistency indicator, not a judgment of scientific quality.
 
 ## Later, only after the core works
 
+- Chainlink CRE confidential research-policy gate. It must be simulated with
+  synthetic data before it is described as a working integration.
 - ENSv2 research identity experiment on Sepolia.
 - Sponsor integrations that genuinely improve the core flow.
 - Mobile polish and demo-friendly guided states.

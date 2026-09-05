@@ -1,7 +1,15 @@
 node_modules/
+.node_modules-corrupt-*/
+.pnpm-store-v0.4/
 dist/
+artifacts/
 .env
 .env.*
 !.env.example
 coverage/
 *.log
+.tools/
+chainlink/**/node_modules/
+chainlink/**/dist/
+chainlink/**/.env
+chainlink/**/.cre_build_tmp.js
