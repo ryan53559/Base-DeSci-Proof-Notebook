@@ -17,6 +17,7 @@ interface ProofRecord {
   creator: string;
   timestamp: number;
   title: string;
+  note: string;
 }
 
 function shortAddress(address: string) {
@@ -72,6 +73,7 @@ export default function App() {
   const [anchorFile, setAnchorFile] = useState<File | null>(null);
   const [anchorHash, setAnchorHash] = useState('');
   const [title, setTitle] = useState('');
+  const [note, setNote] = useState('');
   const [anchorState, setAnchorState] = useState<AppState>('idle');
   const [anchorMessage, setAnchorMessage] = useState('');
   const [verifyState, setVerifyState] = useState<AppState>('idle');
@@ -100,7 +102,7 @@ export default function App() {
       const hashes: string[] = await contract.getProofHashesByCreator(targetWallet);
       const records = await Promise.all(hashes.map(async (hash) => {
         const proof = await contract.getProof(hash);
-        return { hash, creator: proof.creator, timestamp: Number(proof.timestamp), title: proof.title };
+        return { hash, creator: proof.creator, timestamp: Number(proof.timestamp), title: proof.title, note: proof.note };
       }));
       setTimeline(records.sort((a, b) => b.timestamp - a.timestamp));
       setTimelineState('success');
@@ -157,6 +159,9 @@ export default function App() {
     if (new TextEncoder().encode(title.trim()).length > 120) {
       setAnchorState('error'); setAnchorMessage(text.messages.titleLong); return;
     }
+    if (new TextEncoder().encode(note.trim()).length > 280) {
+      setAnchorState('error'); setAnchorMessage(text.messages.noteLong); return;
+    }
     if (!wallet || !networkOk) {
       setAnchorState('error'); setAnchorMessage(text.messages.walletRequired); return;
     }
@@ -167,7 +172,7 @@ export default function App() {
     setAnchorState('working'); setAnchorMessage(text.messages.confirmWallet);
     try {
       const contract = await getWriteContract();
-      const transaction = await contract.anchorProof(anchorHash, title.trim());
+      const transaction = await contract.anchorProof(anchorHash, title.trim(), note.trim());
       setAnchorMessage(text.messages.transactionSent);
       await transaction.wait();
       setAnchorState('success'); setAnchorMessage(text.messages.anchorSuccess);
@@ -193,7 +198,7 @@ export default function App() {
       if (timestamp === 0) {
         setVerifyState('error'); setVerifyMessage(text.messages.noProof); return;
       }
-      setVerifiedProof({ hash, creator: proof.creator, timestamp, title: proof.title });
+      setVerifiedProof({ hash, creator: proof.creator, timestamp, title: proof.title, note: proof.note });
       setVerifyState('success'); setVerifyMessage(text.messages.verifySuccess);
     } catch {
       setVerifyState('error'); setVerifyMessage(text.messages.verifyFailed);
@@ -250,6 +255,9 @@ export default function App() {
             <small>{(anchorFile.size / 1024 / 1024).toFixed(2)} MB</small></div>}
           <label className="field-label">{text.titleLabel}<input value={title}
             onChange={(event) => setTitle(event.target.value)} maxLength={120} placeholder={text.titlePlaceholder} /></label>
+          <label className="field-label">{text.noteLabel}<textarea value={note}
+            onChange={(event) => setNote(event.target.value)} maxLength={280} placeholder={text.notePlaceholder} />
+            <small className="field-hint">{text.noteHint} {note.length}/280</small></label>
           <div className="hash-box"><span>{text.hashLabel}</span><code>{anchorHash || text.hashEmpty}</code></div>
           <button className="primary-button" onClick={anchorProof} disabled={anchorState === 'working'}>
             <Fingerprint size={18} />{text.anchorAction}</button>
@@ -269,6 +277,7 @@ export default function App() {
               <span>{verifyMessage}</span></div>}
             {verifiedProof && <div className="proof-details"><b>{verifiedProof.title}</b>
               <span>{text.creator}: {shortAddress(verifiedProof.creator)}</span>
+              {verifiedProof.note && <span>{text.noteLabel}: {verifiedProof.note}</span>}
               <span>{text.time}: {formatTime(verifiedProof.timestamp, language)}</span>
               {explorerUrl && <a href={explorerUrl} target="_blank" rel="noreferrer">
                 <Link2 size={14} />{text.explorer}</a>}</div>}
@@ -285,7 +294,7 @@ export default function App() {
                 {timelineState === 'working' ? text.refreshing : text.refresh}</button>
               <div className="timeline">{timeline.length === 0 ? <p className="empty">{text.noRecords}</p>
                 : timeline.map((proof) => <div className="timeline-item" key={proof.hash}><i /><div><b>{proof.title}</b>
-                  <span>{formatTime(proof.timestamp, language)}</span><code>{proof.hash.slice(0, 18)}...</code></div></div>)}</div>
+                  {proof.note && <span>{proof.note}</span>}<span>{formatTime(proof.timestamp, language)}</span><code>{proof.hash.slice(0, 18)}...</code></div></div>)}</div>
             </>}
           </article>
         </aside>

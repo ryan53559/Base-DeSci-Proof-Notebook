@@ -8,9 +8,9 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; min-width: 320px; background: #f6f8fb; }
-button, input { font: inherit; }
+button, input, textarea { font: inherit; }
 button { cursor: pointer; }
-button:focus-visible, input:focus-visible, summary:focus-visible, a:focus-visible {
+button:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible, a:focus-visible {
   outline: 3px solid #9bb8ff;
   outline-offset: 3px;
 }
@@ -76,8 +76,8 @@ h2 { font-size: 1.2rem; margin-bottom: 0; letter-spacing: 0; }
 .file-chip { display: flex; align-items: center; gap: 8px; padding: 10px 0; color: #32415d; font-size: .82rem; }
 .file-chip span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }.file-chip small { margin-left: auto; color: #697893; white-space: nowrap; }
 .field-label { display: grid; gap: 7px; font-weight: 760; font-size: .82rem; margin: 12px 0; }
-.field-label input { width: 100%; border: 1px solid #c8d2e2; background: white; border-radius: 6px; padding: 12px; outline: none; }
-.field-label input:focus { border-color: #1746d1; box-shadow: 0 0 0 3px #e2e9ff; }
+.field-label input, .field-label textarea { width: 100%; border: 1px solid #c8d2e2; background: white; border-radius: 6px; padding: 12px; outline: none; }
+.field-label input:focus, .field-label textarea:focus { border-color: #1746d1; box-shadow: 0 0 0 3px #e2e9ff; }
 .hash-box { background: #111a2a; color: #dce7ff; border-radius: 7px; padding: 13px; margin: 17px 0; }
 .hash-box span { display: block; font-size: .68rem; color: #a8b8d6; margin-bottom: 7px; }.hash-box code { display: block; font-size: .7rem; overflow-wrap: anywhere; line-height: 1.5; }
 .primary-button { width: 100%; min-height: 45px; padding: 12px 16px; color: white; background: #1746d1; }.primary-button:hover { background: #123aa9; }
@@ -90,6 +90,8 @@ h2 { font-size: 1.2rem; margin-bottom: 0; letter-spacing: 0; }
 .score-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0 13px; }.score-row span { display: block; color: #65728a; font-size: .77rem; }.score-row b { font-size: 2rem; line-height: 1.1; }.score-row b small { font-size: .76rem; color: #67738a; }
 .score-ring { --score: 0%; height: 52px; width: 52px; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(#c77800 var(--score), #e9edf4 0); position: relative; }.score-ring::before { content: ''; position: absolute; inset: 5px; background: white; border-radius: 50%; }.score-ring span { z-index: 1; color: #293954; font-weight: 820; font-size: .86rem; }
 .score-note { color: #6a778d; font-size: .7rem; line-height: 1.55; margin: 0 0 12px; }
+.field-label textarea { min-height: 78px; resize: vertical; }
+.field-hint { display: block; color: #6a778d; font-size: .72rem; font-weight: 500; line-height: 1.4; margin-top: 6px; }
 .quiet-button { background: #e9eeff; color: #173eaf; padding: 9px 11px; font-size: .79rem; }
 .timeline { display: grid; gap: 12px; margin-top: 15px; }.timeline-item { display: grid; grid-template-columns: 12px minmax(0, 1fr); gap: 10px; }.timeline-item i { margin: 4px 0 0; width: 9px; height: 9px; border-radius: 50%; background: #c77800; box-shadow: 0 0 0 4px #fff1d8; }.timeline-item div { display: grid; gap: 3px; min-width: 0; }.timeline-item b { font-size: .81rem; }.timeline-item span, .timeline-item code { font-size: .69rem; color: #6b7890; overflow-wrap: anywhere; }.empty { color: #738097; font-size: .82rem; line-height: 1.6; margin: 10px 0 0; }
 

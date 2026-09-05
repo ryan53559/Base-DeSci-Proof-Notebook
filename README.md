@@ -20,8 +20,8 @@ require blockchain knowledge.
 ## The solution
 
 The browser calculates a SHA-256 hash of a selected file locally. It never
-uploads the file. A smart contract records the hash, title, and blockchain
-timestamp on Base Sepolia. Anyone can later select the original file to check
+uploads the file. A smart contract records the hash, title, optional short public
+research note, and blockchain timestamp on Base Sepolia. Anyone can later select the original file to check
 whether its locally calculated hash matches the onchain proof.
 
 ## Planned core flow

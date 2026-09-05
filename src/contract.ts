@@ -11,10 +11,10 @@ export const BASE_SEPOLIA = {
 export const CONTRACT_ADDRESS = import.meta.env.VITE_CONTRACT_ADDRESS?.trim() ?? '';
 
 export const CONTRACT_ABI = [
-  'function anchorProof(bytes32 fileHash, string title)',
-  'function getProof(bytes32 fileHash) view returns (address creator, uint64 timestamp, string title)',
+  'function anchorProof(bytes32 fileHash, string title, string note)',
+  'function getProof(bytes32 fileHash) view returns (address creator, uint64 timestamp, string title, string note)',
   'function getProofHashesByCreator(address creator) view returns (bytes32[])',
-  'event ProofAnchored(bytes32 indexed fileHash, address indexed creator, uint64 timestamp, string title)',
+  'event ProofAnchored(bytes32 indexed fileHash, address indexed creator, uint64 timestamp, string title, string note)',
 ];
 
 export function isContractConfigured() {
