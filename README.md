@@ -47,6 +47,7 @@ not independently prove legal ownership, authorship, or where a file was made.
 - [Test wallet readiness](WALLET_READINESS.md)
 - [Build log](BUILD_LOG.md)
 - [Version and history rules](VERSIONING.md)
+- [Project progress](PROGRESS_ZH_EN.md)
 - [Chainlink confidential research gate](chainlink/README.md)
 - [Chainlink build status](chainlink/BUILD_STATUS.md)
 
