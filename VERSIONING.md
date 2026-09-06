@@ -17,6 +17,7 @@ This project keeps two kinds of history.
 
 ## Current progress
 
+- `v0.5.3-public-address-input`: public history accepts valid MetaMask addresses regardless of pasted letter casing.
 - `v0.1.0-foundation`: app shell, local SHA-256, Base Sepolia contract source, beginner explanations.
 - `v0.2.0-bilingual-showcase`: bilingual UI, public history, and deployed Base connection.
 - `v0.3.0-chainlink-confidential-gate`: Chainlink CRE confidential workflow and successful synthetic simulation.

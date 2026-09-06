@@ -4,7 +4,7 @@ import {
   FileKey2, FileUp, Fingerprint, FlaskConical, History, Info, Languages, Link2,
   LoaderCircle, LockKeyhole, Network, ShieldAlert, Wallet,
 } from 'lucide-react';
-import { BrowserProvider, formatEther, isAddress } from 'ethers';
+import { BrowserProvider, formatEther } from 'ethers';
 import { COPY, Language } from './copy';
 import {
   BASE_SEPOLIA, CONTRACT_ADDRESS, getReadContract, getWriteContract, isContractConfigured,
@@ -25,6 +25,11 @@ interface ProofRecord {
 
 function shortAddress(address: string) {
   return `${address.slice(0, 6)}...${address.slice(-4)}`;
+}
+
+function normalizePublicAddress(value: string) {
+  const address = value.trim().toLowerCase();
+  return /^0x[0-9a-f]{40}$/.test(address) ? address : null;
 }
 
 function formatTime(timestamp: number, language: Language) {
@@ -119,12 +124,13 @@ export default function App() {
   }, [timeline]);
 
   const loadTimeline = async (targetWallet = timelineOwner) => {
-    if (!targetWallet || !isAddress(targetWallet)) return;
+    const normalizedWallet = normalizePublicAddress(targetWallet);
+    if (!normalizedWallet) return;
     if (!isContractConfigured()) { setTimeline([]); return; }
     setTimelineState('working');
     try {
       const contract = await getReadContract();
-      const hashes: string[] = await contract.getProofHashesByCreator(targetWallet);
+      const hashes: string[] = await contract.getProofHashesByCreator(normalizedWallet);
       const records = await Promise.all(hashes.map(async (hash) => {
         const proof = await contract.getProof(hash);
         return { hash, creator: proof.creator, timestamp: Number(proof.timestamp), title: proof.title, note: proof.note };
@@ -135,12 +141,13 @@ export default function App() {
   };
 
   const lookupPublicTimeline = async () => {
-    if (!isAddress(timelineLookup.trim())) {
+    const normalizedWallet = normalizePublicAddress(timelineLookup);
+    if (!normalizedWallet) {
       setTimeline([]);
       setTimelineState('error');
       return;
     }
-    await loadTimeline(timelineLookup.trim());
+    await loadTimeline(normalizedWallet);
   };
 
   const connectWallet = async () => {

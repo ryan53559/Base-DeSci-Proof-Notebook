@@ -1,5 +1,9 @@
 # Build Log
 
+## 2026-09-06 - v0.5.3 public address input
+
+- Repaired the public-history address input: it now normalizes the address before format checking and accepts valid mixed-case wallet addresses.
+
 ## 2026-09-05 00:00 Asia/Taipei
 
 - Official ETHOnline 2026 From Scratch work begins.
