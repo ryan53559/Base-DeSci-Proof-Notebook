@@ -17,6 +17,7 @@ This project keeps two kinds of history.
 
 ## Current progress
 
+- `v0.5.4-public-rpc-read`: use a browser CORS-compatible Base Sepolia read endpoint, decode the deployed proof tuple correctly, and distinguish address-format errors from chain-read errors.
 - `v0.5.3-public-address-input`: public history accepts valid MetaMask addresses regardless of pasted letter casing.
 - `v0.1.0-foundation`: app shell, local SHA-256, Base Sepolia contract source, beginner explanations.
 - `v0.2.0-bilingual-showcase`: bilingual UI, public history, and deployed Base connection.

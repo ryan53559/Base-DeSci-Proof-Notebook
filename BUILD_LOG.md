@@ -1,5 +1,11 @@
 # Build Log
 
+## 2026-09-06 - v0.5.4 browser public reads
+
+- Replaced the browser-side `FallbackProvider` read path with the CORS-compatible PublicNode Base Sepolia endpoint.
+- Split invalid-address and chain-read error messages for the public proof timeline.
+- Corrected the `getProof` ABI to decode the contract's returned `Proof` tuple; this unblocks both file verification and public history records.
+
 ## 2026-09-06 - v0.5.3 public address input
 
 - Repaired the public-history address input: it now normalizes the address before format checking and accepts valid mixed-case wallet addresses.

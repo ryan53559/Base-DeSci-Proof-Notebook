@@ -137,7 +137,10 @@ export default function App() {
       }));
       setTimeline(records.sort((a, b) => b.timestamp - a.timestamp));
       setTimelineState('success');
-    } catch { setTimelineState('error'); }
+    } catch (error) {
+      console.error('Public history read failed', error);
+      setTimelineState('error');
+    }
   };
 
   const lookupPublicTimeline = async () => {
@@ -242,7 +245,8 @@ export default function App() {
       }
       setVerifiedProof({ hash, creator: proof.creator, timestamp, title: proof.title, note: proof.note });
       setVerifyState('success'); setVerifyMessage(text.messages.verifySuccess);
-    } catch {
+    } catch (error) {
+      console.error('Proof verification failed', error);
       setVerifyState('error'); setVerifyMessage(text.messages.verifyFailed);
     }
   };
@@ -364,7 +368,8 @@ export default function App() {
               <p className="score-note">{text.scoreNote}</p>
               <button className="quiet-button" onClick={() => loadTimeline(timelineOwner)} disabled={timelineState === 'working'}>
                 {timelineState === 'working' ? text.refreshing : text.refresh}</button>
-              {timelineState === 'error' && <p className="status error"><Info size={16} />{text.messages.timelineAddressInvalid}</p>}
+              {timelineState === 'error' && <p className="status error"><Info size={16} />
+                {normalizePublicAddress(timelineOwner) ? text.messages.timelineReadFailed : text.messages.timelineAddressInvalid}</p>}
               <div className="timeline">{timeline.length === 0 ? <p className="empty">{text.noRecords}</p>
                 : timeline.map((proof) => <div className="timeline-item" key={proof.hash}><i /><div><b>{proof.title}</b>
                   {proof.note && <span>{proof.note}</span>}<span>{formatTime(proof.timestamp, language)}</span><code>{proof.hash.slice(0, 18)}...</code></div></div>)}</div>
