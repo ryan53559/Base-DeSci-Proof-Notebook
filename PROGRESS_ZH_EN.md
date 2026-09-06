@@ -4,6 +4,8 @@ Last updated: 2026-09-06
 
 ## Completed / 已完成
 
+- [x] Repaired browser-side Base Sepolia public reads with a CORS-compatible endpoint and clearer timeline errors.
+- [x] Corrected `getProof` tuple decoding; verified it reads the deployed `battery-cycle` proof and public note.
 - [x] Repaired public-history address input so valid MetaMask address casing cannot block a lookup.
 - [x] Public product name: **DeSci Proof Notebook**.
 - [x] Bilingual React website with local SHA-256 file hashing.
