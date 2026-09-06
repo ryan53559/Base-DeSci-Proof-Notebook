@@ -79,3 +79,11 @@
 - Updated version history and prepared a final Pages deployment.
 - Removed the obsolete `standalone.html` prototype because it still described
   the contract as undeployed and could confuse users after the live React build.
+
+## 2026-09-06 - v0.5.1 public release
+
+- Corrected the GitHub `github-pages` environment rule so `main` can deploy.
+- Re-ran the Pages workflow successfully and verified the public project URL.
+- Confirmed the live page exposes the deployed Base Sepolia contract and the
+  Chainlink simulation boundary.
+- Added dynamic HTML language metadata for Chinese and English accessibility.

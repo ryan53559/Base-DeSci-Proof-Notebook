@@ -5,7 +5,7 @@ This project keeps two kinds of history.
 ## Git history
 
 - `main` contains reviewed, working milestones.
-- `feature/v0.5-submission-kit` is the active implementation branch.
+- `main` is the public release branch; short-lived feature and fix branches preserve milestone work.
 - Every meaningful change receives a short commit message before it is merged.
 - Major milestones use a Git tag such as `v0.1.0` so the exact submission state can be recovered.
 
@@ -22,7 +22,8 @@ This project keeps two kinds of history.
 - `v0.3.0-chainlink-confidential-gate`: Chainlink CRE confidential workflow and successful synthetic simulation.
 - `v0.4.0-ui-pages-release`: responsive UI polish, evidence section, and Pages workflow.
 - `v0.5.0-submission-kit`: science-fair report, official video script, repeatable tests, and submission evidence.
+- `v0.5.1-pages-accessibility`: live GitHub Pages release and correct HTML language metadata.
 
-The four feature branches remain on GitHub. Git branches and tags are the
+The milestone branches remain on GitHub. Git branches and tags are the
 recoverable version snapshots; copying the whole repository into each version
 would add duplicate files and make judging history harder to read.

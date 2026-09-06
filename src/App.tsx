@@ -1,4 +1,4 @@
-import { ChangeEvent, DragEvent, useMemo, useState } from 'react';
+import { ChangeEvent, DragEvent, useEffect, useMemo, useState } from 'react';
 import {
   ArrowDown, Check, CheckCircle2, ClipboardCheck, Copy, DatabaseZap, ExternalLink,
   FileKey2, FileUp, Fingerprint, FlaskConical, History, Info, Languages, Link2,
@@ -92,6 +92,10 @@ export default function App() {
   const [copiedValue, setCopiedValue] = useState('');
   const text = COPY[language];
   const timelineOwner = timelineLookup.trim() || wallet;
+
+  useEffect(() => {
+    document.documentElement.lang = language === 'zh' ? 'zh-Hant' : 'en';
+  }, [language]);
 
   const copyValue = async (value: string) => {
     if (!value) return;

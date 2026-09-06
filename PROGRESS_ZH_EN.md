@@ -19,7 +19,8 @@ Last updated: 2026-09-06
 - [x] Chainlink CRE Confidential Workflow compiled and simulated with synthetic data only.
 - [x] Git history preserved in feature branches.
 - [x] Responsive v0.4 interface checked on desktop and a 390 x 844 mobile viewport.
-- [x] GitHub Pages build and deployment workflow prepared.
+- [x] GitHub Pages deployed and verified at the public project URL.
+- [x] Public Chinese/English switching and desktop rendering rechecked after deployment.
 - [x] Chainlink CRE deployment access request submitted.
 - [x] CRE simulation re-run using the website demo CSV fingerprint.
 - [x] Science-fair style report, official video script, AI disclosure, and sponsor evidence prepared.
