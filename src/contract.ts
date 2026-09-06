@@ -1,4 +1,4 @@
-import { BrowserProvider, Contract, JsonRpcProvider } from 'ethers';
+import { BrowserProvider, Contract, FallbackProvider, JsonRpcProvider } from 'ethers';
 
 export const BASE_SEPOLIA = {
   chainId: '0x14a34',
@@ -10,6 +10,13 @@ export const BASE_SEPOLIA = {
 
 export const DEFAULT_CONTRACT_ADDRESS = '0xD505ad9d439ee159eE4Af3ad331F417C3B8A4a29';
 export const CONTRACT_ADDRESS = import.meta.env.VITE_CONTRACT_ADDRESS?.trim() || DEFAULT_CONTRACT_ADDRESS;
+
+// Reading a public proof must work without MetaMask. Use two CORS-enabled public
+// endpoints so a temporary RPC outage does not block verification or history.
+const READ_RPC_URLS = [
+  'https://sepolia.base.org',
+  'https://base-sepolia-rpc.publicnode.com',
+];
 
 export const CONTRACT_ABI = [
   'function anchorProof(bytes32 fileHash, string title, string note)',
@@ -23,9 +30,14 @@ export function isContractConfigured() {
 }
 
 export async function getReadContract() {
-  const provider = new JsonRpcProvider(BASE_SEPOLIA.rpcUrls[0], 84532, {
+  const providers = READ_RPC_URLS.map((url) => new JsonRpcProvider(url, 84532, {
     staticNetwork: true,
-  });
+  }));
+  const provider = new FallbackProvider(
+    providers,
+    { chainId: 84532, name: 'base-sepolia' },
+    { quorum: 1 },
+  );
   return new Contract(CONTRACT_ADDRESS, CONTRACT_ABI, provider);
 }
 

@@ -23,6 +23,7 @@ This project keeps two kinds of history.
 - `v0.4.0-ui-pages-release`: responsive UI polish, evidence section, and Pages workflow.
 - `v0.5.0-submission-kit`: science-fair report, official video script, repeatable tests, and submission evidence.
 - `v0.5.1-pages-accessibility`: live GitHub Pages release and correct HTML language metadata.
+- `v0.5.2-public-read-fallback`: resilient no-wallet verification and public-history reads.
 
 The milestone branches remain on GitHub. Git branches and tags are the
 recoverable version snapshots; copying the whole repository into each version

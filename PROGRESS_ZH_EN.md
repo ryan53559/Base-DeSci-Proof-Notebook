@@ -25,6 +25,7 @@ Last updated: 2026-09-06
 - [x] CRE simulation re-run using the website demo CSV fingerprint.
 - [x] Science-fair style report, official video script, AI disclosure, and sponsor evidence prepared.
 - [x] Repeatable smoke test added for original and modified demo files.
+- [x] Added public RPC fallback for wallet-free verification and history lookup.
 
 ## In progress / 進行中
 

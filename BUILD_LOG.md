@@ -87,3 +87,8 @@
 - Confirmed the live page exposes the deployed Base Sepolia contract and the
   Chainlink simulation boundary.
 - Added dynamic HTML language metadata for Chinese and English accessibility.
+
+## 2026-09-06 - v0.5.2 public read reliability
+
+- Added a second CORS-enabled Base Sepolia RPC fallback for wallet-free file
+  verification and public-history lookups.
