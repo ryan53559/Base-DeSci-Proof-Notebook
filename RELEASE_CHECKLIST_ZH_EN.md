@@ -6,7 +6,7 @@
 - [x] Bilingual responsive website built.
 - [x] Local SHA-256 hashing; research files are never uploaded.
 - [x] Public file verification and wallet history lookup need no wallet.
-- [x] GitHub Pages workflow prepared.
+- [x] GitHub Pages public deployment completed and checked.
 - [x] Chainlink CRE local simulation completed with synthetic data.
 - [x] Chainlink CRE deployment access requested.
 - [x] Chainlink simulation repeated with the exact website demo-file hash.
@@ -15,8 +15,8 @@
 
 ## One wallet action / 需要一次錢包操作
 
-Create one demonstration proof with `demo/battery-cycle-original.csv` after the
-public website is available. Connecting a wallet is free. Creating the proof
+Create one demonstration proof with `demo/battery-cycle-original.csv` on the
+public website. Connecting a wallet is free. Creating the proof
 requires approving one Base Sepolia testnet transaction and uses test ETH only.
 
 公開網站上線後，用 `demo/battery-cycle-original.csv` 建立一筆示範存證。連接錢包

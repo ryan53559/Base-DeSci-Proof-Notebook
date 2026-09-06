@@ -70,7 +70,7 @@ The Base Sepolia contract is deployed at
 Its source was verified through Remix with Sourcify and Blockscout.
 
 The included GitHub Pages workflow builds from `main`. The address above is the
-website default. The repository Actions variable `VITE_CONTRACT_ADDRESS` may
+verified public deployment. The repository Actions variable `VITE_CONTRACT_ADDRESS` may
 override it for a future deployment.
 
 The Chainlink CRE confidential extension has passed a local simulation with
