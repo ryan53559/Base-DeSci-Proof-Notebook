@@ -1,5 +1,7 @@
 # DeSci Proof Notebook
 
+![DeSci Proof Notebook logo](submission-assets/desci-proof-notebook-logo-v1.png)
+
 An open, beginner-friendly research proof app on Base Sepolia for proving that a research file
 existed at a particular time without uploading that file anywhere.
 
@@ -9,6 +11,8 @@ existed at a particular time without uploading that file anywhere.
 - Build window started: 2026-09-05 00:00 Asia/Taipei
 - Current network target: Base Sepolia only
 - Repository purpose: official hackathon submission source
+- ETHOnline project submitted: 2026-09-13
+- Public showcase: [DeSci Proof Notebook](https://ethglobal.com/showcase/desci-proof-notebook-ycsh7)
 
 ## The problem
 
@@ -24,7 +28,7 @@ uploads the file. A smart contract records the hash, title, optional short publi
 research note, and blockchain timestamp on Base Sepolia. Anyone can later select the original file to check
 whether its locally calculated hash matches the onchain proof.
 
-## Planned core flow
+## Core flow
 
 1. Select a file and calculate its fingerprint locally.
 2. Create an onchain proof on Base Sepolia.

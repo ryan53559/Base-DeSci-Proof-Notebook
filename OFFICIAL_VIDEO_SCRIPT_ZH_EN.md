@@ -139,12 +139,12 @@ Base Sepolia；Chainlink CRE 處理機密規則；GitHub Pages 提供公開網�
 
 ## Final upload checklist / 最後上傳檢查
 
-- [ ] Duration is between 2:00 and 4:00; target 3:30 to 3:40.
-- [ ] Resolution is 720p or higher.
-- [ ] Real human voice, normal speed, no AI voiceover.
-- [ ] Product works on screen; loading waits are removed.
-- [ ] Base transaction or explorer evidence is visible.
-- [ ] CRE simulation success and commitment are readable.
-- [ ] AI use is disclosed.
-- [ ] No personal data, credentials, seed phrase, or real balance is visible.
-- [ ] Video link is publicly viewable before submission.
+- [x] Duration is between 2:00 and 4:00.
+- [x] Resolution is 720p or higher.
+- [x] Real human voice, normal speed, no AI voiceover.
+- [x] Product works on screen; loading waits are removed.
+- [x] Base transaction or explorer evidence is visible.
+- [x] CRE simulation success and commitment are readable.
+- [x] AI use is disclosed.
+- [x] No personal data, credentials, seed phrase, or real balance is visible.
+- [x] Video was uploaded with the ETHOnline submission on 2026-09-13.

@@ -1,6 +1,6 @@
 # Project Progress / 專案進度
 
-Last updated: 2026-09-06
+Last updated: 2026-09-13
 
 ## Completed / 已完成
 
@@ -29,16 +29,18 @@ Last updated: 2026-09-06
 - [x] Science-fair style report, official video script, AI disclosure, and sponsor evidence prepared.
 - [x] Repeatable smoke test added for original and modified demo files.
 - [x] Added public RPC fallback for wallet-free verification and history lookup.
+- [x] Created a Base Sepolia demonstration proof using the synthetic CSV.
+- [x] Recorded and uploaded the project demonstration video.
+- [x] Submitted the ETHOnline 2026 project with its GitHub repository, public Pages URL, images, video, Chainlink application, and AI disclosure.
 
 ## In progress / 進行中
 
 - [ ] Wait for Chainlink to review the CRE deployment access request.
 
-## Not started / 尚未開始
+## External follow-up / 等待外部後續
 
-- [ ] Create one demonstration proof with the synthetic CSV.
-- [ ] Record the short project demonstration video.
-- [ ] Complete the ETHGlobal project submission page.
+- [ ] Monitor ETHGlobal notifications for showcase publication, finalist screening, or partner-prize results.
+- [ ] Wait for the ETHOnline stake return to the primary wallet. The dashboard states that processing may take up to three weeks after the event.
 
 ## Honest status / 誠實狀態
 
